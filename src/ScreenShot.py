@@ -19,7 +19,7 @@ flag1=0
 flag2=0
 
 def oneClickScreenShot(flag1, flag2):
-     os.system("ffmpeg -ss "+ str(flag1)+':' +str(flag2) +  " -i \"" +file+ "\" -f image2 -r 2 -t 00:01 ./input/fromvideo/"+ str(flag1)+'：' +str(flag2) +"%3d.jpg")
+     os.system("ffmpeg -ss "+ str(flag1)+':' +str(flag2) +  " -i \"" +file+ "\" -f image2 -r 2 -t 00:01 ./input/fromvideo/"+ str(flag1)+'min' +str(flag2) +"%3d.jpg")
      print(flag1,flag2)
 
 def screenshotter(start1,start2):
