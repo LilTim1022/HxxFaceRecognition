@@ -7,7 +7,7 @@ matplotlib.use("Qt5Agg")
 import sys
 sys.path.append('../')
 from recognition import *
-
+from ScreenShot import *
 
 class UI(object):
     def __init__(self, form, model):
@@ -54,6 +54,12 @@ class UI(object):
         self.pushButton_select_img = QtWidgets.QPushButton(self.layout_widget)
         self.pushButton_select_img.setObjectName("pushButton_2")
         self.horizontal_layout.addWidget(self.pushButton_select_img)
+
+        #增加截图按钮
+        self.pushButton_screenshot = QtWidgets.QPushButton(self.layout_widget)
+        self.pushButton_screenshot.setObjectName("pushButton_3")
+        self.horizontal_layout.addWidget(self.pushButton_screenshot)
+
         self.vertical_layout.addLayout(self.horizontal_layout)
         self.graphicsView = QtWidgets.QGraphicsView(form)
         self.graphicsView.setGeometry(QtCore.QRect(360, 210, 800, 500))
@@ -79,6 +85,7 @@ class UI(object):
         self.label_rst.setObjectName("label_rst")
 
         self.pushButton_select_img.clicked.connect(self.open_file_browser)
+        self.pushButton_screenshot.clicked.connect(self.gui_screenshot)
         self.retranslate_ui(form)
         QtCore.QMetaObject.connectSlotsByName(form)
 
@@ -88,10 +95,16 @@ class UI(object):
         self.label_raw_pic.setText(_translate("Form", "O(∩_∩)O"))
         self.label_designer.setText(_translate("Form", "designed by wss"))
         self.pushButton_select_img.setText(_translate("Form", "选择图像"))
+
+        self.pushButton_screenshot.setText(_translate("Form", "一键截图"))
+
         self.label_result.setText(_translate("Form", "识别结果"))
         self.label_emotion.setText(_translate("Form", "null"))
         self.label_bar.setText(_translate("Form", "概率直方图"))
         self.label_rst.setText(_translate("Form", "Result"))
+
+    def gui_screenshot(self):
+        screenshotter(start1,start2)
 
     def open_file_browser(self):
         # 加载模型

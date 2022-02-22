@@ -13,31 +13,32 @@ start2 = int(startstr.split(":")[1])
 
 end1 = int(endstr.split(":")[0])
 end2 = int(endstr.split(":")[1])
-print(start1,start2,end1,end2)
+#print(start1,start2,end1,end2)
 
 flag1=0
 flag2=0
 
-def func(flag1,flag2):
+def oneClickScreenShot(flag1, flag2):
      os.system("ffmpeg -ss "+ str(flag1)+':' +str(flag2) +  " -i \"" +file+ "\" -f image2 -r 2 -t 00:01 ./input/fromvideo/"+ str(flag1)+'：' +str(flag2) +"%3d.jpg")
      print(flag1,flag2)
 
-
-while start1 <= end1:
-    if start1 == end1:
-        if start2 ==end2:
-            exit()
+def screenshotter(start1,start2):
+    while start1 <= end1:
+        if start1 == end1:
+            if start2 ==end2:
+                # exit()
+                break
+            else:
+                while start2 < end2:
+                    oneClickScreenShot(start1, start2)
+                    start2 += 1
         else:
-            while start2 < end2:
-                func(start1, start2)
-                start2 += 1
-    else:
-        if start2 == 60:
-            start2=0
-            start1+=1
-            func(start1, start2)
-        else:
-            while start2 < 60:
-                func(start1, start2)
-                start2 += 1
+            if start2 == 60:
+                start2=0
+                start1+=1
+                oneClickScreenShot(start1, start2)
+            else:
+                while start2 < 60:
+                    oneClickScreenShot(start1, start2)
+                    start2 += 1
 
